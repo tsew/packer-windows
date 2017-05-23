@@ -40,12 +40,12 @@ switch ( (Get-WssConfigurationStatus).Status) {
     }
 
     'Running' {
-        while ( (Get-WssConfigurationStatus).Status -ne "Finished" ) {
+        while ( (Get-WssConfigurationStatus).Status -ne 'Finished' ) {
             LogWrite 'Waiting for WSS Configuration to finish'
             Sleep -Seconds 120
         }
 
-        if ( (Get-WssConfigurationStatus).Status -eq "Finished" ) {
+        if ( (Get-WssConfigurationStatus).Status -eq 'Finished' ) {
             Write-Log 'WSS Configuration finished'
             Remove-ItemProperty -Path $RegistryKey -Name $RegistryEntry -ErrorAction SilentlyContinue
             Invoke-Expression 'a:\openssh.ps1 -AutoStart'
@@ -61,4 +61,3 @@ switch ( (Get-WssConfigurationStatus).Status) {
     }
 
 }
-
