@@ -42,7 +42,7 @@ switch ( (Get-WssConfigurationStatus).Status) {
     'Running' {
         while ( (Get-WssConfigurationStatus).Status -ne 'Finished' ) {
             LogWrite 'Waiting for WSS Configuration to finish'
-            Sleep -Seconds 120
+            Sleep -Seconds 30
         }
 
         if ( (Get-WssConfigurationStatus).Status -eq 'Finished' ) {
