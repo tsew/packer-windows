@@ -35,7 +35,7 @@ switch ( (Get-WssConfigurationStatus).Status) {
 
         LogWrite 'Adding registry key'
 
-        Set-ItemProperty -Path $RegistryKey -Name $RegistryEntry -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File $($ScriptPath)" 
+        Set-ItemProperty -Path $RegistryKey -Name $RegistryEntry -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File $($ScriptPath)"
 
     }
 
@@ -61,3 +61,4 @@ switch ( (Get-WssConfigurationStatus).Status) {
     }
 
 }
+
