@@ -35,17 +35,16 @@ switch ( (Get-WssConfigurationStatus).Status) {
 
         LogWrite 'Adding registry key'
 
-        Set-ItemProperty -Path $RegistryKey -Name $RegistryEntry -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File $($ScriptPath) -MaxUpdatesPerCycle $($MaxUpdatesPerCycle)"
-
+        Set-ItemProperty -Path $RegistryKey -Name $RegistryEntry -Value 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\wss-setup.ps1'
     }
 
     'Running' {
-        while ( (Get-WssConfigurationStatus).Status -ne "Finished" ) {
+        while ( (Get-WssConfigurationStatus).Status -ne 'Finished' ) {
             LogWrite 'Waiting for WSS Configuration to finish'
-            Sleep -Seconds 120
+            Sleep -Seconds 30
         }
 
-        if ( (Get-WssConfigurationStatus).Status -eq "Finished" ) {
+        if ( (Get-WssConfigurationStatus).Status -eq 'Finished' ) {
             Write-Log 'WSS Configuration finished'
             Remove-ItemProperty -Path $RegistryKey -Name $RegistryEntry -ErrorAction SilentlyContinue
             Invoke-Expression 'a:\openssh.ps1 -AutoStart'
